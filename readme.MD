@@ -1,0 +1,37 @@
+# go-routine-pool
+
+
+
+A way to limit the parallelism while running multiple tasks.
+
+Under the hood it uses Go routines.
+
+
+
+### Usage
+
+```
+package main
+
+import (
+    pool "github.com/zmalik/go-routine-pool"
+)
+
+func parallelTask(x int, y *int) int {
+	fmt.Printf("%d\n", x)
+	*y = x + *y
+	return x
+}
+
+
+func main() {
+    routinePool := pool.NewDefaultRoutinePool()
+
+    var result int
+    for i := 0; i < 20; i++ {
+        routinePool.Run(parallelTask, i, &result)
+    }
+    fmt.Println(result)
+}
+```
+
