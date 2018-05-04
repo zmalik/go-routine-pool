@@ -10,7 +10,7 @@ Under the hood it uses Go routines.
 
 ### Usage
 
-```
+```go
 package main
 
 import (
@@ -35,3 +35,18 @@ func main() {
 }
 ```
 
+### Limiting number of Go routines
+
+```go
+routinePool := pool.NewRoutinePool(5)
+```
+
+
+
+## Why?
+
+Power is nothing without control 
+
+Using Go routines one can easily rage the power of routines without limiting how many parallel tasks are running. 
+
+This library helps to control that in easy way
